@@ -1,12 +1,15 @@
 node{
     def mvnHome
+	def workspace
 	           stage('Preparation') {
-       git 'https://github.com/amar5607/sonar_testing_2.git'
+       git 'https://github.com/amar5607/sonar_jenkins_testing.git'
 	         mvnHome = tool 'maven_new'
+			 scannerhome = tool 'sonar'
 	                                 }
-           stage('SonarQube Analysis') {
+           stage('SonarQube Analysis'){
+		   sh """echo ${workspace}"""
                                     withSonarQubeEnv('sonar') { 
-                                  sh "${mvnHome}/bin/mvn clean package sonar:sonar"
+                                     sh "${mvnHome}/bin/mvn clean package sonar:sonar"
                                     }
 									}
 }
