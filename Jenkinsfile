@@ -9,7 +9,9 @@ node{
            stage('SonarQube Analysis'){
 		   sh """echo ${workspace}"""
                                     withSonarQubeEnv('sonar_qube') { 
-                                     sh """${scannerhome}/bin/sonar-scanner -D sonar.projectKey=jenkins sonar.sources=src/main"""
+                                     sh """${scannerhome}/bin/sonar-scanner \
+				     -Dsonar.projectKey=jenkins \
+				     -Dsonar.sources=src/main \"""
                                     }
 									}
 }
