@@ -10,10 +10,10 @@ node{
 		   sh """echo ${workspace}"""
                                     withSonarQubeEnv('sonar') { 
                                      sh """
-   ${scannerHome}/bin/sonar-scanner \
-   -Dsonar.projectKey=yjenkins \
-   -Dsonar.sources=src/main \
-"""
+                                    ${scannerhome}/bin/sonar-scanner \
+                                    -Dsonar.projectKey=sonar \
+                                    -Dsonar.sources=src/main \
+                                     """
                                     }
 									}
 }
